@@ -10,16 +10,19 @@ const install = function (Vue, options) {
       devtool: false,
     },
     created() {
-      window.postMessage({
-        type: 'dystore-init'
-      })
-      window.addEventListener('message', event => {
-        if (event.data.type == 'dystore-finish') {
-          this.devtool = true
-          this.sendMsg()
-        }
-      })
-
+      try {
+        window.postMessage({
+          type: 'dystore-init'
+        })
+        window.addEventListener('message', event => {
+          if(event.data.type == 'dystore-finish'){
+            this.devtool = true
+            this.sendMsg()
+          }
+        })
+      } catch (e) {
+        e
+      }
     },
     watch: {
       state: {
@@ -34,13 +37,18 @@ const install = function (Vue, options) {
         if (this.devtool) {
           window.postMessage({
             type: 'store-change', msg: JSON.stringify(this.state, (k, v) => {
-              if (typeof v === 'undefined') {
-                return 'undefined'
-              } else {
-                return v
-              }
-            })
-          }, '*')
+              if(typeof v === 'undefined')
+          {
+            return 'undefined'
+          }
+        else
+          {
+            return v
+          }
+        })
+        },
+          '*'
+        )
         }
       }
     }

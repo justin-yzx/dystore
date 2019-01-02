@@ -1,9 +1,9 @@
 {
   "name": "dystore",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "dist/index.js",
-  "author": "yangzexin",
+  "author": "",
   "private": false,
   "scripts": {
     "build": "webpack --mode production --config ./webpack.conf.js"
@@ -12,7 +12,6 @@
     "type": "git",
     "url": "git+https://github.com/snake-developers/dystore.git"
   },
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/snake-developers/dystore/issues"
