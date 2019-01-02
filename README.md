@@ -21,6 +21,28 @@ Vue.use(dystore,store)
 let a = this.$store.state.data1
 this.$store.state.test = '456'
 ```
+
+- mapState
+``` javascript
+import { mapState } from 'dystore'
+
+{
+  ...,
+  computed:{
+    ...mapState({
+      test:'state.data1'
+    })
+  },
+  ...
+}
+
+赋值（可以直接赋值）
+this.test='123'
+取值
+<div>{{ test }}</div> 
+
+```
+
 - event-bus
 ``` javascript
 this.$store.$emit('testevent','123')
